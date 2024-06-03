@@ -33,7 +33,7 @@ $ docker stack deploy -c docker-compose.yml my_stack
 
 ## Structure of data storage in a relational database
 
-![Alt text](.\src\main\resources\static\NBA_player_stats_scheme.png)
+![Alt text](src/main/resources/static/NBA_player_stats_scheme.png)
 
 ## Horizontal Scaling
 
