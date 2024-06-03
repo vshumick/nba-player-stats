@@ -4,7 +4,7 @@ WORKDIR /build/
 COPY pom.xml /build/
 COPY src /build/src
 
-RUN mvn clean package -DskipTests -Dspring.datasource.url=jdbc:h2:mem:testdb
+RUN mvn clean package -DskipTests
 COPY target/nba-player-stats-${VERSION}.jar target/application.jar
 
 FROM openjdk:17.0-jdk-slim

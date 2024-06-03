@@ -4,6 +4,7 @@ com\vshumick\task\kyiv\controller\GameTypeRestController.class
 com\vshumick\task\kyiv\repository\SeasonRepository.class
 com\vshumick\task\kyiv\repository\TeamRepository.class
 com\vshumick\task\kyiv\controller\TeamRestController.class
+com\vshumick\task\kyiv\config\SwaggerConfig.class
 com\vshumick\task\kyiv\repository\GameTypeRepository.class
 com\vshumick\task\kyiv\controller\GameRestController.class
 com\vshumick\task\kyiv\controller\InstanceInfoController.class

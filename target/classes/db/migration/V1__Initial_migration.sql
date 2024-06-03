@@ -42,7 +42,8 @@ BEGIN
         block INT CHECK (block >= 0),
         foul INT CHECK (foul >= 0 AND foul <= 6),
         turnover INT CHECK (turnover >= 0),
-        played_minute NUMERIC CHECK (played_minute >= 0 AND played_minute <= 48.0)
+        played_minute NUMERIC CHECK (played_minute >= 0 AND played_minute <= 48.0),
+        CONSTRAINT unique_player_game UNIQUE (player_id, game_id)
     );
 
 

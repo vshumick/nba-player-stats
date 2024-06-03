@@ -1,5 +1,7 @@
 package com.vshumick.task.kyiv.controller;
 
+import com.vshumick.task.kyiv.dto.PlayerSeasonAverageStatsDTO;
+import com.vshumick.task.kyiv.dto.TeamSeasonAverageStatsDTO;
 import com.vshumick.task.kyiv.model.Statistics;
 import com.vshumick.task.kyiv.service.StatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +53,15 @@ public class StatisticsRestController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/average/player/{playerId}")
+    public List<PlayerSeasonAverageStatsDTO> getAverageStatistics(@PathVariable Long playerId) {
+        return statisticsService.getAverageStatisticsByPlayerId(playerId);
+    }
+
+    @GetMapping("/average/team/{teamId}")
+    public List<TeamSeasonAverageStatsDTO> getAverageStatisticsByTeam(@PathVariable Long teamId) {
+        return statisticsService.getAverageStatisticsByTeam(teamId);
     }
 }

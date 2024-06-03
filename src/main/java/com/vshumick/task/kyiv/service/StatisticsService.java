@@ -1,5 +1,7 @@
 package com.vshumick.task.kyiv.service;
 
+import com.vshumick.task.kyiv.dto.PlayerSeasonAverageStatsDTO;
+import com.vshumick.task.kyiv.dto.TeamSeasonAverageStatsDTO;
 import com.vshumick.task.kyiv.model.Statistics;
 import com.vshumick.task.kyiv.repository.StatisticsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,27 +28,21 @@ public class StatisticsService {
         return statisticsRepository.save(statistics);
     }
 
+    public Statistics updateStatistics(Long id, Statistics statisticsDetails) {
+        Statistics statistics = statisticsRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Statistics not found"));
+        return statisticsRepository.save(statistics);
+    }
+
     public void deleteStatisticsById(Long id) {
         statisticsRepository.deleteById(id);
     }
 
-    public Statistics updateStatistics(Long id, Statistics statisticsDetails) {
-        Optional<Statistics> optionalStatistics = statisticsRepository.findById(id);
-        if (optionalStatistics.isPresent()) {
-            Statistics statistics = optionalStatistics.get();
-            statistics.setPlayer(statisticsDetails.getPlayer());
-            statistics.setGame(statisticsDetails.getGame());
-            statistics.setPoint(statisticsDetails.getPoint());
-            statistics.setRebound(statisticsDetails.getRebound());
-            statistics.setAssist(statisticsDetails.getAssist());
-            statistics.setSteal(statisticsDetails.getSteal());
-            statistics.setBlock(statisticsDetails.getBlock());
-            statistics.setFoul(statisticsDetails.getFoul());
-            statistics.setTurnover(statisticsDetails.getTurnover());
-            statistics.setPlayedMinute(statisticsDetails.getPlayedMinute());
-            return statisticsRepository.save(statistics);
-        } else {
-            throw new RuntimeException("Statistics not found with id " + id);
-        }
+    public List<PlayerSeasonAverageStatsDTO> getAverageStatisticsByPlayerId(Long playerId) {
+        return statisticsRepository.findAverageStatisticsByPlayerId(playerId);
+    }
+
+    public List<TeamSeasonAverageStatsDTO> getAverageStatisticsByTeam(Long teamId) {
+        return statisticsRepository.findAverageStatisticsByTeamId(teamId);
     }
 }
