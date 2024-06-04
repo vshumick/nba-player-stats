@@ -9,7 +9,7 @@ $ docker run --name testDB -e POSTGRES_USER=testUser -e POSTGRES_PASSWORD=testPa
 ```
 
 ## Build Setup
-To deploy this project, Docker Compose version 1.13.0 or higher is required.
+To deploy this project, **Java 17** or higher is required and **Maven 3.8.1** or higher is required and **Docker Compose version 1.13.0** or higher is required.
 Start next steps from work directory ../nba-player-stats
 ```bash
 # Build the project and install the resulting artifacts in the local Maven repository 
